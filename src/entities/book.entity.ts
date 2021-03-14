@@ -5,33 +5,33 @@ export class Book extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({nullable: false})
   author: string;
 
   @Column()
   country: string;
 
-  @Column()
+  @Column({nullable: true})
   imageLink?: string;
 
-  @Column()
+  @Column({nullable: false})
   language: string;
 
-  @Column()
+  @Column({nullable: true})
   link?: string;
 
-  @Column()
+  @Column({nullable: false})
   pages: number;
 
-  @Column()
+  @Column({nullable: false})
   title: string;
 
-  @Column()
+  @Column({nullable: false})
   year: number
 
-  @Column()
+  @Column({nullable: false})
   createdAt: Date
 
-  @Column()
+  @Column({default: new Date(), nullable: false})
   updatedAt: Date
 }
