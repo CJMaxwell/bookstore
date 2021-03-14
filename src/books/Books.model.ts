@@ -7,5 +7,7 @@ export interface IBook {
   link?: string;
   pages: number;
   title: string;
-  year: number
+  year: number,
+  createdAt: Date
+  updatedAt: Date
 }

@@ -28,4 +28,10 @@ export class Book extends BaseEntity {
 
   @Column()
   year: number
+
+  @Column()
+  createdAt: Date
+
+  @Column()
+  updatedAt: Date
 }

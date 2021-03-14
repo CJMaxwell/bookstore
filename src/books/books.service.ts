@@ -15,7 +15,9 @@ export class BooksService {
   async createBook(book:  CreateBookDto): Promise<IBook> {
     const newBook: IBook = {
       id: uuidv4(),
-      ...book
+      ...book,
+      createdAt: new Date(),
+      updatedAt: new Date()
     };
     
     const savedBook = await this.booksRepo.save(newBook);
@@ -39,19 +41,16 @@ export class BooksService {
     return book;
   }
 
-  // deleteBook(id: string) {
-  //   this.books = this.books.filter(book => book.id !== id);
-  // }
+  async updateBook(id: string, book: CreateBookDto) {
+    const existingbook = await this.getBookById(id);
+    if(!existingbook) throw new NotFoundException(404, 'Book does not exist');
 
-  // updateBook(id: string, book: CreateBookDto) {
-  //   const existingbook = this.getBookById(id);
-  //   if(!existingbook) return 'Book does not exist';
+    // const newBook: IBook = {
+    
+    // };
 
-  //   const newBook = {
-  //     id,
-  //     ...book
-  //   };
+    // const updatedBook = await this.booksRepo.update(newBook);
 
-  //   this.books.push(newBook)
-  // }
+    // return updatedBook;
+  }
 }
