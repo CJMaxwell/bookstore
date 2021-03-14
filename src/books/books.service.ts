@@ -30,13 +30,14 @@ export class BooksService {
     return books;
   }
 
-  // getBookById(id: string) {
-  //   const book = this.books.filter(book => book.id === id);
-  //   if(!book) {
-  //     return 'Book does not exist';
-  //   }
-  //   return book;
-  // }
+  async getBookById(id: string): Promise<IBook> {
+    const book:IBook = await this.booksRepo.findOne(id);
+    if(!book) {
+      throw new NotFoundException(404, 'Book does not exist');
+    };
+
+    return book;
+  }
 
   // deleteBook(id: string) {
   //   this.books = this.books.filter(book => book.id !== id);
